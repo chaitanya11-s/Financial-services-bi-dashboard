@@ -20,10 +20,10 @@ def generate_financial_data(num_rows=1000):
             asset_class = random.choice(asset_classes)
             
             market_value = np.random.normal(1000000, 200000)
-            daily_return = np.random.normal(0.0005, 0.015) # Mean 0.05% return, 1.5% std dev
+            daily_return = np.random.normal(0.0005, 0.015)
             trades_count = np.random.randint(5, 50)
-            settlement_errors = np.random.poisson(0.5) # Rare errors
-            compliance_checks = np.random.choice([0, 1], p=[0.98, 0.02]) # 2% chance of check flag
+            settlement_errors = np.random.poisson(0.5)
+            compliance_checks = np.random.choice([0, 1], p=[0.98, 0.02])
             
             data.append([
                 date.strftime('%Y-%m-%d'),
