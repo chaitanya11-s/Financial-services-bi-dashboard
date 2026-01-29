@@ -13,6 +13,7 @@ class FinancialKPICalculator:
         
     def load_data(self, data_file):
         # Load csv and fix dates
+        self.data = pd.read_csv(data_file)
         self.data['Date'] = pd.to_datetime(self.data['Date'])
         return self.data
     
