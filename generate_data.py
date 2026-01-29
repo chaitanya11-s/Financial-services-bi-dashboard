@@ -10,35 +10,51 @@ def generate_financial_data(num_rows=1000):
     
     portfolio_ids = ['PF_001', 'PF_002', 'PF_003', 'PF_004', 'PF_005']
     asset_classes = ['Equities', 'Fixed Income', 'Derivatives', 'Commodities', 'Real Estate']
+    client_segments = ['Institutional', 'High Net Worth', 'Retail', 'Corporate']
     
     data = []
     
     for date in dates:
         # Generate data for a few random portfolios each day
-        for _ in range(3): 
+        for _ in range(5): 
             pf_id = random.choice(portfolio_ids)
             asset_class = random.choice(asset_classes)
+            segment = random.choice(client_segments)
             
             market_value = np.random.normal(1000000, 200000)
             daily_return = np.random.normal(0.0005, 0.015)
             trades_count = np.random.randint(5, 50)
+            transaction_volume = trades_count * np.random.uniform(1000, 50000) # New: Volume
             settlement_errors = np.random.poisson(0.5)
             compliance_checks = np.random.choice([0, 1], p=[0.98, 0.02])
+            
+            # New Metrics for Resume
+            client_retention_flag = np.random.choice([1, 0], p=[0.95, 0.05]) # 1=Retained, 0=Churned
+            nps_score = np.random.randint(1, 11) # Net Promoter Score
+            liquidity_ratio = np.random.uniform(0.5, 3.0) 
+            expenses = np.random.uniform(500, 5000)
             
             data.append([
                 date.strftime('%Y-%m-%d'),
                 pf_id,
                 asset_class,
+                segment,
                 round(market_value, 2),
                 round(daily_return, 6),
                 trades_count,
+                round(transaction_volume, 2),
                 settlement_errors,
-                compliance_checks
+                compliance_checks,
+                client_retention_flag,
+                nps_score,
+                round(liquidity_ratio, 2),
+                round(expenses, 2)
             ])
             
     columns = [
-        'Date', 'Portfolio_ID', 'Asset_Class', 'Market_Value', 
-        'Daily_Return', 'Trades_Count', 'Settlement_Errors', 'Compliance_Checks'
+        'Date', 'Portfolio_ID', 'Asset_Class', 'Client_Segment', 'Market_Value', 
+        'Daily_Return', 'Trades_Count', 'Transaction_Volume', 'Settlement_Errors', 
+        'Compliance_Checks', 'Client_Retention_Flag', 'NPS_Score', 'Liquidity_Ratio', 'Expenses'
     ]
     
     df = pd.DataFrame(data, columns=columns)
