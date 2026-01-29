@@ -1,5 +1,7 @@
 # Financial Services BI Dashboard
 
+![Dashboard Preview](images/dashboard_preview.png)
+
 ## Overview
 This project focuses on **Automated Business Intelligence** for Asset Management. 
 
