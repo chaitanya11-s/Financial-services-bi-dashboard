@@ -21,7 +21,7 @@ def generate_financial_data(num_rows=1000):
             asset_class = random.choice(asset_classes)
             segment = random.choice(client_segments)
             
-            market_value = np.random.normal(1000000, 200000)
+            market_value = np.random.normal(850000000, 50000000) # Avg 850M per position -> Total ~4.2B
             daily_return = np.random.normal(0.0005, 0.015)
             trades_count = np.random.randint(5, 50)
             transaction_volume = trades_count * np.random.uniform(1000, 50000) # New: Volume
